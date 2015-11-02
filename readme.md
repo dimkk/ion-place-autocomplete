@@ -14,4 +14,4 @@ How to use:
 <ion-google-place placeholder="Your address" ng-model="yourModel" location-changed="yourLocationChangeCallback"/>
 ```
 
-## [http://codepen.io/ivanthecrazy/pen/vNaLJx](Demo)
+## [Demo](http://codepen.io/ivanthecrazy/pen/vNaLJx)
