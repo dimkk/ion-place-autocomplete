@@ -1,9 +1,13 @@
-.my-autocomplete {
+.ion-place-tools-autocomplete {
 	position: relative;
 	width: 100%;
+	overflow: visible;
 }
+	.ion-place-tools-autocomplete input {
+		width: 100%;
+	}
 
-.my-autocomplete-dropdown {
+.ion-place-tools-autocomplete-dropdown {
 	position: absolute;
 	top: 100%;
 	left: 0;

@@ -1,4 +1,4 @@
-angular.module('ion-google-place', [])
+angular.module('ion-place-tools', [])
     .directive('ionGooglePlace', [
         '$ionicTemplateLoader',
         '$ionicPlatform',
@@ -11,9 +11,9 @@ angular.module('ion-google-place', [])
                 require: '?ngModel',
                 restrict: 'E',
                 template:
-                    '<div class="my-autocomplete">' +
-                        '<input type="text" class="ion-google-place" autocomplete="off" ng-model="searchQuery">' +
-                        '<div class="my-autocomplete-dropdown" ng-if="dropDownActive">' +
+                    '<div class="item ion-place-tools-autocomplete">' +
+                        '<input type="text" autocomplete="off" ng-model="searchQuery">' +
+                        '<div class="ion-place-tools-autocomplete-dropdown" ng-if="dropDownActive">' +
                             '<ion-list>' +
                                 '<ion-item ng-repeat="location in locations" ng-click="selectLocation(location)">' +
                                     '{{location.description}}' +
@@ -52,7 +52,10 @@ angular.module('ion-google-place', [])
                         if (searchEventTimeout) $timeout.cancel(searchEventTimeout);
                         searchEventTimeout = $timeout(function() {
                             if(!query) return;
-                            if(query.length < 3);
+                            if (query.length < 3) {
+                                scope.locations = [];
+                                return;
+                            };
 
                             var req = {};
                             req.input = query;
