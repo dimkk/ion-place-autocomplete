@@ -10,17 +10,7 @@ angular.module('ion-place-tools', [])
             return {
                 require: '?ngModel',
                 restrict: 'E',
-                template:
-                    '<div class="item ion-place-tools-autocomplete">' +
-                        '<input type="text" autocomplete="off" ng-model="searchQuery">' +
-                        '<div class="ion-place-tools-autocomplete-dropdown" ng-if="dropDownActive">' +
-                            '<ion-list>' +
-                                '<ion-item ng-repeat="location in locations" ng-click="selectLocation(location)">' +
-                                    '{{location.description}}' +
-                                '</ion-item>' +
-                            '</ion-list>' +
-                        '</div>' +
-                    '</div>',
+                templateUrl: 'src/ionGooglePlaceTemplate.html',
                 replace: true,
                 scope: {
                     searchQuery: '=ngModel',
@@ -99,3 +89,16 @@ angular.module('ion-place-tools', [])
             };
         }
     ]);
+
+// Add flexibility to template directive
+var template = '<div class="item ion-place-tools-autocomplete">' +
+                    '<input type="text" autocomplete="off" ng-model="searchQuery">' +
+                    '<div class="ion-place-tools-autocomplete-dropdown" ng-if="dropDownActive">' +
+                        '<ion-list>' +
+                            '<ion-item ng-repeat="location in locations" ng-click="selectLocation(location)">' +
+                                '{{location.description}}' +
+                            '</ion-item>' +
+                        '</ion-list>' +
+                    '</div>' +
+                '</div>';
+angular.module("ion-place-tools").run(["$templateCache", function($templateCache) {$templateCache.put("src/ionGooglePlaceTemplate.html",template);}]);
