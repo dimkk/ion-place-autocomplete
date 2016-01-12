@@ -75,12 +75,14 @@ placeTools.directive('ionGooglePlace', [
                     };
 
                     var onCancel = function(e){
-                        scope.dropDownActive = false;
-                        scope.$digest();
+                        setTimeout(function () {
+                            scope.dropDownActive = false;
+                            scope.$digest();
+                        }, 500);
                     };
 
                     element.find('input').bind('click', onClick);
-                    // element.find('input').bind('blur', onCancel);
+                    element.find('input').bind('blur', onCancel);
                     element.find('input').bind('touchend', onClick);
 
 
