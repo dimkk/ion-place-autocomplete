@@ -103,4 +103,4 @@ var template = '<div class="item ion-place-tools-autocomplete">' +
                         '</ion-list>' +
                     '</div>' +
                 '</div>';
-angular.module("ion-place-tools").run(["$templateCache", function($templateCache) {$templateCache.put("src/ionGooglePlaceTemplate.html",template);}]);
+placeTools.run(["$templateCache", function($templateCache) {$templateCache.put("src/ionGooglePlaceTemplate.html",template);}]);
