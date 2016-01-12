@@ -1,5 +1,5 @@
-angular.module('ion-place-tools', [])
-    .directive('ionGooglePlace', [
+window.placeTools = angular.module('ion-place-tools', []);
+placeTools.directive('ionGooglePlace', [
         '$ionicTemplateLoader',
         '$ionicPlatform',
         '$q',
@@ -24,7 +24,8 @@ angular.module('ion-place-tools', [])
                 replace: true,
                 scope: {
                     searchQuery: '=ngModel',
-                    locationChanged: '&'
+                    locationChanged: '&',
+                    radius: '='
                 },
                 link: function(scope, element, attrs, ngModel) {
                     scope.dropDownActive = false;
@@ -45,8 +46,9 @@ angular.module('ion-place-tools', [])
                             scope.locationChanged()(location.description);
                         }
                     };
-
-                    // console.log(attrs.locationChanged);
+                    if (!scope.radius) {
+                        scope.radius = 1500000;
+                    }
 
                     scope.$watch('searchQuery', function(query){
                         if (searchEventTimeout) $timeout.cancel(searchEventTimeout);
@@ -61,7 +63,7 @@ angular.module('ion-place-tools', [])
                             req.input = query;
                             if (latLng) {
                                 req.location = latLng;
-                                req.radius = 1500000;
+                                req.radius = scope.radius;
                             }
                             service.getQueryPredictions(req, function (predictions, status) {
                                 if (status == google.maps.places.PlacesServiceStatus.OK) {
@@ -88,7 +90,7 @@ angular.module('ion-place-tools', [])
                     };
 
                     element.find('input').bind('click', onClick);
-                    element.find('input').bind('blur', onCancel);
+                    // element.find('input').bind('blur', onCancel);
                     element.find('input').bind('touchend', onClick);
 
 
