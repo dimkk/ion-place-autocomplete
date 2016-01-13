@@ -82,7 +82,7 @@ placeTools.directive('ionGooglePlace', [
                         setTimeout(function () {
                             scope.dropDownActive = false;
                             scope.$digest();
-                        }, 500);
+                        }, 200);
                     };
 
                     element.find('input').bind('click', onClick);

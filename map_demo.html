@@ -33,6 +33,10 @@
           alert($scope.data.address + ' selected!');
         };
 
+        $scope.showAlert = function (msg) {
+          alert(msg);
+        };
+
         setTimeout(function () {
           $scope.options.marker = true;
           $scope.$apply();
@@ -43,6 +47,7 @@
 
   <body ng-controller="MyCtrl">
     <ion-header-bar class="bar-stable">
+      <button class="button icon ion-navicon" ng-click="showAlert(22)"></button>
       <h1 class="title">Ionic Blank Starter</h1>
     </ion-header-bar>
     <ion-content scroll="false">

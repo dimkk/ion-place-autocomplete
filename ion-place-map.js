@@ -4,15 +4,17 @@ placeTools
   		restrict: 'E',
   		template: [
   			'<div class="ion-place-tools-map-holder" ng-class="{ \'visible\': visible }">',
-  				'<div class="ion-place-tools-map"></div>',
-  				'<div class="autocomplete-wrap">',
-  					'<ion-google-place radius="options.radius" placeholder="Your address" location-changed="locationChanged" ng-model="data.address" required name="address"/>',
-  				'</div>',
-  				'<div class="controls">',
-  					'<button type="button" class="button button-stable" ng-click="hideModal()">Cancel</button>',
-  					'&nbsp;',
-  					'<button type="button" class="button button-positive" ng-click="callSuccess()">OK</button>',
-  				'</div>',
+  				'<div class="ion-place-tools-map-wrapper">',
+	  				'<div class="ion-place-tools-map"></div>',
+	  				'<div class="autocomplete-wrap">',
+	  					'<ion-google-place radius="options.radius" placeholder="Your address" location-changed="locationChanged" ng-model="data.address" required name="address"/>',
+	  				'</div>',
+	  				'<div class="controls">',
+	  					'<button type="button" class="button button-stable" ng-click="hideModal()">Cancel</button>',
+	  					'&nbsp;',
+	  					'<button type="button" class="button button-positive" ng-click="callSuccess()">OK</button>',
+	  				'</div>',
+	  			'</div>',
   			'</div>'
   		].join(''),
   		scope: {
@@ -29,7 +31,7 @@ placeTools
   				marker: true
   			}, scope.options);
 
-  			var mapEl = element.find('div')[0],
+  			var mapEl = element.find('div')[0].children[0],
   				mapProp = {
 				    center: new google.maps.LatLng(51.508742,-0.120850),
 				    zoom: 5,
