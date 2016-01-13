@@ -40,7 +40,10 @@ placeTools.directive('ionGooglePlace', [
                         scope.radius = 1500000;
                     }
 
-                    scope.$watch('searchQuery', function(query){
+                    scope.locations = []
+
+                    scope.$watch('searchQuery', function(query) {
+                        scope.dropDownActive = (query.length >= 3 && scope.locations.length);
                         if (searchEventTimeout) $timeout.cancel(searchEventTimeout);
                         searchEventTimeout = $timeout(function() {
                             if(!query) return;
@@ -58,6 +61,7 @@ placeTools.directive('ionGooglePlace', [
                             service.getQueryPredictions(req, function (predictions, status) {
                                 if (status == google.maps.places.PlacesServiceStatus.OK) {
                                     scope.locations = predictions;
+                                    scope.$apply();
                                 }
                             });
                         }, 350); // we're throttling the input by 350ms to be nice to google's API
