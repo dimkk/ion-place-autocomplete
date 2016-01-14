@@ -43,6 +43,9 @@ placeTools.directive('ionGooglePlace', [
                     scope.locations = []
 
                     scope.$watch('searchQuery', function(query) {
+                        if (!query) {
+                            query = '';
+                        }
                         scope.dropDownActive = (query.length >= 3 && scope.locations.length);
                         if (searchEventTimeout) $timeout.cancel(searchEventTimeout);
                         searchEventTimeout = $timeout(function() {
