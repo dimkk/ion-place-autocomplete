@@ -1,6 +1,8 @@
 # Google Places based autocomplete directive for Ionic framework
 
-by [http://devfanatic.com](http://devfanatic.com)
+by [http://devfanaticblog.com](http://devfanaticblog.com)
+
+[Update for Ionic 2](http://devfanaticblog.com/google-maps-autocomplete-for-ionic-2-applications/)
 
 How to use:
 
